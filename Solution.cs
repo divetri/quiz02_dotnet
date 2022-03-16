@@ -1,4 +1,4 @@
-﻿namespace Quiz02
+namespace Quiz02
 {
     class Solution
     {
@@ -8,6 +8,15 @@
             {
                 Console.Write($"{list[i]} ");
                 
+            }
+            Console.WriteLine();
+        }
+        public static void ReadChar(char[] list)
+        {
+            for (int i = 0; i < list.Length; i++)
+            {
+                Console.Write($"{list[i]} ");
+
             }
             Console.WriteLine();
         }
@@ -109,6 +118,7 @@
         {
             Console.WriteLine("Before Marker");
             ReadInt(list);
+            Console.WriteLine("After Marker");
             Array.Sort(list);
             for (int i=0; i<list.Length; i++)
             {
@@ -125,11 +135,58 @@
                         {
                             list[j] = list[j + 1];
                         }
-                        
                     }
                 }
             }
             ReadInt(list);
+        }
+        public static void Soal7(int[] list)
+        {
+            Console.WriteLine("Before Remove");
+            ReadInt(list);
+            Console.WriteLine("After Remove Duplicate");
+            Array.Sort(list);
+            for (int i = 0; i < list.Length; i++)
+            {
+                int x = list[i];
+                if (i < list.Length-1 && x == list[i+1])
+                {
+                    continue;
+                }
+                Console.Write($"{list[i]} ");
+            }
+            Console.WriteLine();
+        }
+        public static void Soal8()
+        {
+            var alpa = "abcdefghijklmnopqrstuvwxyz";
+            Random rand = new Random();
+            char[] list = new char[100];
+            for (int i = 0; i < 100; i++)
+            {
+                list[i] = alpa[rand.Next(0,26)];
+            }
+            ReadChar(list);
+            Console.WriteLine("---------Result--------");
+            Array.Sort(list);
+            int count = 1;
+            for (int i = 0; i < list.Length; i++)
+            {
+                int x = list[i];
+                if (i < list.Length - 1 && x == list[i + 1])
+                {
+                    count++;
+                }
+                else if (i == list.Length - 1 && x == list[i - 1])
+                {
+                    Console.Write($"{count} {list[i]} ");
+                }
+                else
+                {
+                    Console.Write($"{count} {list[i]} ");
+                    count = 1;
+                }
+            }
         }
     }
 }
